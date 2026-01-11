@@ -95,7 +95,6 @@ This repository contains all the projects I'm building as I learn web developmen
 
 - [FreeCodeCamp](https://www.freecodecamp.org/)
 - [MDN Web Docs](https://developer.mozilla.org/)
-- Claude AI (for guidance and debugging)
 - YouTube tutorials
 - Practice, practice, practice!
 
@@ -141,8 +140,8 @@ I started learning to code at 13 because I want to build amazing things and have
 
 I'm always excited to connect with other learners and developers!
 
-- **GitHub:** [@YOUR-USERNAME](https://github.com/YOUR-USERNAME)
-- **Email:** your.email@example.com (if you want to share)
+- **GitHub:** [@YOUR-USERNAME](https://github.com/mairakhancontact-sudo)
+- **Email:**mairakhan.contact@gmail.com (if you want to share)
 
 ---
 
@@ -152,7 +151,6 @@ Special thanks to:
 - My family for supporting my learning journey
 - The amazing dev community for free resources
 - Everyone who has shared their knowledge online
-- Claude AI for being my coding mentor
 
 ---
 
