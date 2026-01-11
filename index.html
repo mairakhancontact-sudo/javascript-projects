@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maira's JavaScript Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .project-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .project-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .project-description {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .project-tech {
+            font-size: 14px;
+            color: #999;
+            font-style: italic;
+        }
+        
+        .day-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .stats h2 {
+            margin-bottom: 15px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> Maira's JavaScript Portfolio</h1>
+            <p class="subtitle">Learning to code, one project at a time!</p>
+        </header>
+        
+        <div class="stats">
+            <h2> My Learning Journey</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Projects Built</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Days of Learning</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">13</div>
+                    <div class="stat-label">Years Old</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- Day 1 Project -->
+            <a href="day-01-counter.html" class="project-card">
+                <div class="day-badge">DAY 1</div>
+                <div class="project-icon">🎮</div>
+                <h3 class="project-title">Click Counter</h3>
+                <p class="project-description">
+                    My first interactive JavaScript project! Click the button to count up, and reset whenever you want.
+                </p>
+                <p class="project-tech">HTML • CSS • JavaScript Variables</p>
+            </a>
+            
+            <!-- Day 2 Projects -->
+            <a href="color-changer.html" class="project-card">
+                <div class="day-badge">DAY 2</div>
+                <div class="project-icon">🎨</div>
+                <h3 class="project-title">Magic Color Changer</h3>
+                <p class="project-description">
+                    Click buttons to change the background color! Features multiple colors and a random color generator.
+                </p>
+                <p class="project-tech">Functions • Event Handlers • DOM</p>
+            </a>
+            
+            <a href="number-game.html" class="project-card">
+                <div class="day-badge">DAY 2</div>
+                <div class="project-icon">🎲</div>
+                <h3 class="project-title">Number Guessing Game</h3>
+                <p class="project-description">
+                    Guess the secret number between 1-10! The game tells you if you're too high or too low.
+                </p>
+                <p class="project-tech">If/Else Statements • Math.random()</p>
+            </a>
+            
+            <a href="age-checker.html" class="project-card">
+                <div class="day-badge">DAY 2</div>
+                <div class="project-icon">🎂</div>
+                <h3 class="project-title">Age Checker</h3>
+                <p class="project-description">
+                    Enter your birth year to calculate your age, see fun facts, and get your age category!
+                </p>
+                <p class="project-tech">Multiple Functions • Complex If/Else • Validation</p>
+            </a>
+        </div>
+        
+        <footer>
+            <p style="font-size: 18px; margin-bottom: 10px;">
+                👩‍💻 Built with passion by Maira
+            </p>
+            <p style="font-size: 14px; opacity: 0.8;">
+                Age 13 • Learning JavaScript • Abbottabad, Pakistan 🇵🇰
+            </p>
+            <p style="font-size: 14px; margin-top: 15px;">
+                Started: January 2026 • More projects coming soon!
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

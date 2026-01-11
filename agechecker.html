@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #a493fb 0%, #37c7eb 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        input {
+            font-size: 24px;
+            padding: 15px;
+            width: 200px;
+            border: none;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        button {
+            font-size: 20px;
+            padding: 15px 40px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        #result {
+            margin-top: 30px;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+        
+        .fact {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        
+        .emoji {
+            font-size: 40px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1> Age Checker</h1>
+    
+    <div class="container">
+        <p style="font-size: 22px;">Enter your birth year:</p>
+        <input type="number" id="yearInput" placeholder="e.g., 2013" min="1900" max="2026">
+        <br>
+        <button id="checkBtn"> Check My Age!</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const yearInput = document.getElementById('yearInput');
+        const checkButton = document.getElementById('checkBtn');
+        const resultDiv = document.getElementById('result');
+        
+        function calculateAge(birthYear) {
+            const currentYear = 2026;
+            return currentYear - birthYear;
+        }
+        
+        function getAgeCategory(age) {
+            if (age < 0) {
+                return "🤔 Time traveler from the future?";
+            } else if (age === 0) {
+                return "👶 Brand new baby!";
+            } else if (age < 3) {
+                return "👶 Toddler";
+            } else if (age < 13) {
+                return "🧒 Kid";
+            } else if (age < 20) {
+                return "🎮 Teenager";
+            } else if (age < 60) {
+                return "👨 Adult";
+            } else {
+                return "👴 Senior";
+            }
+        }
+        
+        function getFunFacts(age) {
+            const months = age * 12;
+            const days = age * 365;
+            const hours = days * 24;
+            
+            return {
+                months: months,
+                days: days,
+                hours: hours
+            };
+        }
+        
+        function checkAge() {
+            const birthYear = parseInt(yearInput.value);
+            
+            // Validate input
+            if (!birthYear || birthYear < 1900 || birthYear > 2026) {
+                resultDiv.innerHTML = '<p class="fact">❌ Please enter a valid year between 1900 and 2026!</p>';
+                return;
+            }
+            
+            // Calculate age
+            const age = calculateAge(birthYear);
+            const category = getAgeCategory(age);
+            const facts = getFunFacts(age);
+            
+            // Display results
+            let html = `
+                <div class="emoji">${category.split(' ')[0]}</div>
+                <div class="fact">
+                    <strong>You are ${age} years old!</strong><br>
+                    Category: ${category}
+                </div>
+            `;
+            
+            if (age > 0 && age < 150) {
+                html += `
+                    <div class="fact">
+                        📅 That's approximately:<br>
+                        <strong>${facts.months}</strong> months<br>
+                        <strong>${facts.days}</strong> days<br>
+                        <strong>${facts.hours.toLocaleString()}</strong> hours!
+                    </div>
+                `;
+                
+                // Add special messages
+                if (age === 13) {
+                    html += `<div class="fact">🎉 You're officially a teenager! Welcome to the club!</div>`;
+                } else if (age < 13) {
+                    html += `<div class="fact">⏳ You'll be a teenager in ${13 - age} years!</div>`;
+                } else if (age === 18) {
+                    html += `<div class="fact">🎊 You're an adult now! Big responsibilities ahead!</div>`;
+                } else if (age < 18) {
+                    html += `<div class="fact">⏳ You'll be an adult in ${18 - age} years!</div>`;
+                }
+            }
+            
+            resultDiv.innerHTML = html;
+        }
+        
+        // Event listeners
+        checkButton.onclick = checkAge;
+        
+        yearInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkAge();
+            }
+        });
+        
+        console.log('Age Checker ready! 🎂');
+    </script>
+</body>
+</html>

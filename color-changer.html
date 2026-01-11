@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Color Changer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            transition: background-color 0.5s ease;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            color: white;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 20px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 3px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        #redBtn {
+            background-color: #e74c3c;
+        }
+        
+        #blueBtn {
+            background-color: #3498db;
+        }
+        
+        #greenBtn {
+            background-color: #2ecc71;
+        }
+        
+        #purpleBtn {
+            background-color: #9b59b6;
+        }
+        
+        #randomBtn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            color: white;
+            font-size: 14px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Magic Color Changer</h1>
+    <p class="subtitle">Click buttons to change the background!</p>
+    
+    <div class="button-container">
+        <button id="redBtn">🔴 Red</button>
+        <button id="blueBtn">🔵 Blue</button>
+        <button id="greenBtn">🟢 Green</button>
+        <button id="purpleBtn">🟣 Purple</button>
+        <button id="randomBtn">✨ Random</button>
+    </div>
+    
+    <div class="footer">
+        Made by Maira - JavaScript Day 2 🚀
+    </div>
+
+    <script>
+        // Get all the buttons
+        const redButton = document.getElementById('redBtn');
+        const blueButton = document.getElementById('blueBtn');
+        const greenButton = document.getElementById('greenBtn');
+        const purpleButton = document.getElementById('purpleBtn');
+        const randomButton = document.getElementById('randomBtn');
+        
+        // Function to change background color
+        function changeColor(color) {
+            document.body.style.backgroundColor = color;
+            console.log(`Changed to ${color}!`);
+        }
+        
+        // Function to generate random color
+        function getRandomColor() {
+            const colors = ['#e74c3c', '#3498db', '#2ecc71', '#9b59b6', 
+                          '#f39c12', '#1abc9c', '#e67e22', '#34495e'];
+            const randomIndex = Math.floor(Math.random() * colors.length);
+            return colors[randomIndex];
+        }
+        
+        // Add click events to buttons
+        redButton.onclick = function() {
+            changeColor('#e74c3c');
+        };
+        
+        blueButton.onclick = function() {
+            changeColor('#3498db');
+        };
+        
+        greenButton.onclick = function() {
+            changeColor('#2ecc71');
+        };
+        
+        purpleButton.onclick = function() {
+            changeColor('#9b59b6');
+        };
+        
+        randomButton.onclick = function() {
+            const randomColor = getRandomColor();
+            changeColor(randomColor);
+        };
+        
+        console.log('Color changer ready! Click the buttons! 🎨');
+    </script>
+</body>
+</html>
