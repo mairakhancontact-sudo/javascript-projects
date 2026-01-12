@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faulty caculator</title>
+</head>
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* Calculator card */
+.calculator {
+  background: #151523;
+  padding: 30px 40px;
+  border-radius: 16px;
+  width: 350px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.calculator h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+/* Inputs & select */
+.calculator input,
+.calculator select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+}
+
+/* Button */
+.calculator button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7f5cff, #5a3bff);
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calculator button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(127, 92, 255, 0.4);
+}
+
+/* Result */
+#result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  min-height: 1.5em;
+}
+
+</style>
+<body>
+   <div class="calculator">
+  <h1>Faulty Calculator 😈</h1>
+
+  <input type="number" id="num1" placeholder="Number 1">
+  <input type="number" id="num2" placeholder="Number 2">
+
+  <select id="operator">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+
+  <button id="calc">Calculate</button>
+
+  <p id="result"></p>
+</div>
+
+ 
+</body>
+</html>
+
+<script>
+    document.getElementById("calc").addEventListener("click", function () {
+  let a = Number(document.getElementById("num1").value);
+  let b = Number(document.getElementById("num2").value);
+  let op = document.getElementById("operator").value;
+
+  let isFaulty = Math.random() < 0.1; // 10% chance
+  let result;
+
+  if (isFaulty) {
+    // WRONG operations
+    switch (op) {
+      case "+":
+        result = a - b;
+        break;
+      case "*":
+        result = a + b;
+        break;
+      case "-":
+        result = a / b;
+        break;
+      case "/":
+        result = a ** b;
+        break;
+    }
+  } else {
+    // CORRECT operations
+    switch (op) {
+      case "+":
+        result = a + b;
+        break;
+      case "*":
+        result = a * b;
+        break;
+      case "-":
+        result = a - b;
+        break;
+      case "/":
+        result = a / b;
+        break;
+    }
+  }
+
+  document.getElementById("result").textContent =
+    isFaulty ? `😈 Faulty Result: ${result}` : `✅ Correct Result: ${result}`;
+});
+
+</script>
