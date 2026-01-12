@@ -10,6 +10,7 @@ A collection of projects I'm building while learning JavaScript from scratch!
 ## 🌟 About This Repository
 
 This repository contains all the projects I'm building as I learn web development. I'm starting with HTML and CSS, and now diving deep into JavaScript!
+I have created my javascript portfolio which is fully responsive and uses advanced concepts of html and css.
 
 **My Goal:** Become a Full-Stack Developer with AI/ML skills by age 18!
 
