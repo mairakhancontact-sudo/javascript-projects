@@ -5,17 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maira's JavaScript Projects</title>
     <style>
+      html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+.container,
+.projects-grid,
+.project-card,
+.stats {
+  max-width: 100%;
+}
+.project-icon {
+  word-break: break-word;
+}
+@media (max-width: 360px) {
+  .projects-grid {
+    gap: 20px;
+  }
+}
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            max-width: 100vw;
         }
+       
+
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 40px 20px;
+             padding: clamp(20px, 4vw, 40px);
+            width: 100%;
+            overflow-x: hidden;
         }
         
         .container {
@@ -144,6 +170,7 @@
             opacity: 0.8;
             margin-top: 5px;
         }
+
     </style>
 </head>
 <body>
@@ -235,3 +262,4 @@
     </div>
 </body>
 </html>
+
