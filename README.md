@@ -1,175 +1,221 @@
-A collection of projects I'm building while learning JavaScript from scratch!
+🚀 JavaScript Learning Journey
+
+A collection of projects I’m building while learning JavaScript from scratch and growing into a full-stack developer.
 
 👩‍💻 Developer: Maira
 🎂 Age: 13
 📅 Started: January 2026
 
-# 🚀 JavaScript Learning Journey
+🌟 About This Repository
 
+This repository contains all the projects I’m building as I learn web development step by step. I started with HTML and CSS and am now diving deeper into JavaScript fundamentals by building small but meaningful projects.
 
-## 🌟 About This Repository
+I’ve also created a fully responsive JavaScript portfolio using advanced HTML and CSS concepts to showcase my work.
 
-This repository contains all the projects I'm building as I learn web development. I'm starting with HTML and CSS, and now diving deep into JavaScript!
-I have created my javascript portfolio which is fully responsive and uses advanced concepts of html and css.
+🎯 My Goal:
+Become a Full-Stack Developer with AI/ML skills by age 18 and build impactful, real-world applications.
 
-**My Goal:** Become a Full-Stack Developer with AI/ML skills by age 18!
+🎯 Projects
+📂 Day 1: JavaScript Basics
 
----
+🎮 Click Counter
 
-## 🎯 Projects
+My first interactive JavaScript project
 
-### 📂 Day 1: JavaScript Basics
-**🎮 Click Counter**
-- My first interactive JavaScript project
-- Features: Click counting, reset button, visual feedback
-- **Tech:** HTML, CSS, JavaScript (variables, onclick events)
-- **[Live Demo](https://YOUR-USERNAME.github.io/javascript-projects/day-01-counter.html)**
+Features: click counting, reset button, visual feedback
 
----
+Tech: HTML, CSS, JavaScript (variables, onclick events)
 
-### 📂 Day 2: Functions & Conditionals
+📂 Day 2: Functions & Conditionals
 
-**🎨 Magic Color Changer**
-- Click buttons to change background colors
-- Includes random color generator
-- **Tech:** Functions, event handlers, DOM manipulation
-- **[Live Demo](https://YOUR-USERNAME.github.io/javascript-projects/color-changer.html)**
+🎨 Magic Color Changer
 
-**🎲 Number Guessing Game**
-- Guess the secret number between 1-10
-- Get hints if you're too high or too low
-- **Tech:** If/else statements, Math.random(), input validation
-- **[Live Demo](https://YOUR-USERNAME.github.io/javascript-projects/number-game.html)**
+Change background colors with a click
 
-**🎂 Age Checker**
-- Enter birth year to calculate your age
-- See fun facts and age categories
-- **Tech:** Multiple functions, complex conditionals, calculations
-- **[Live Demo](https://YOUR-USERNAME.github.io/javascript-projects/age-checker.html)**
+Includes a random color generator
 
----
+Tech: Functions, event handlers, DOM manipulation
 
-## 📚 What I'm Learning
+🎲 Number Guessing Game
 
-**Week 1:**
-- ✅ HTML5 structure and semantics
-- ✅ CSS3 styling, flexbox, and grid
-- ✅ Responsive design
-- ✅ JavaScript basics (variables, data types)
-- ✅ Functions and parameters
-- ✅ Conditional statements (if/else)
-- ✅ DOM manipulation
-- ✅ Event handling
+Guess the secret number between 1–10
 
-**Coming Next:**
-- 🔄 Loops (for, while)
-- 📋 Arrays and array methods
-- 🎯 More complex DOM manipulation
-- 🎨 Advanced CSS animations
-- 🚀 And much more!
+Get hints if your guess is too high or too low
 
----
+Tech: if/else, Math.random(), input validation
 
-## 💻 Technologies Used
+🎂 Age Checker
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+Enter birth year to calculate your age
 
----
+Displays fun facts and age categories
 
-## 📈 Learning Progress
+Tech: Multiple functions, calculations, conditionals
 
-| Week | Topics Covered | Projects Built |
-|------|---------------|----------------|
-| Week 1 | HTML & CSS | Netflix Clone |
-| Week 2 | JavaScript Basics | 4 interactive projects |
-| Week 3 | Coming soon... | TBD |
+📂 Day 3: DOM Manipulation & Logic
 
-**Total Projects:** 5  
-**Lines of Code:** ~800+  
-**Hours Invested:** 14+ hours  
+🧮 Shopping Calculator
 
----
+Dynamically add multiple item rows
 
-## 🎓 Learning Resources
+Enter quantity and price for each item
 
-- [FreeCodeCamp](https://www.freecodecamp.org/)
-- [MDN Web Docs](https://developer.mozilla.org/)
-- YouTube tutorials
-- Practice, practice, practice!
+Calculate total shopping cost with one click
 
----
+Card height grows automatically as items are added
 
-## 🌱 My Learning Philosophy
+Tech: DOM manipulation, event handling, calculations
 
-> "I'm learning to code 2 hours every day. Consistency beats intensity!"
+✅ To-Do List
 
-**My Schedule:**
-- **Daily:** 2 focused hours of coding
-- **Weekly:** Build 2-3 new projects
-- **Monthly Goal:** Master one major concept
+Add, complete, and delete daily tasks
 
-**Why I'm Doing This:**
-I started learning to code at 13 because I want to build amazing things and have the freedom to create anything I imagine. By age 18, I plan to be a professional developer!
+Clean and minimal user interface
 
----
+Helps manage productivity efficiently
 
-## 🎯 Goals
+Tech: Arrays, DOM rendering, event listeners
 
-**Short-term (3 months):**
-- ✅ Learn HTML & CSS (DONE!)
-- 🔄 Master JavaScript fundamentals
-- 📱 Build my first full website
-- 🎮 Create interactive web games
+🧠 Quiz Game
 
-**Mid-term (1 year):**
-- Learn React for frontend
-- Learn Node.js for backend
-- Build 50+ projects
-- Start freelancing
+Interactive multiple-choice quiz
 
-**Long-term (5 years):**
-- Master Full-Stack Development
-- Learn AI/ML and build AI-powered apps
-- Become financially independent through coding
-- Help others learn to code
+Tracks score and displays results
 
----
+Instant feedback for correct and incorrect answers
 
-## 📫 Connect With Me
+Tech: Conditionals, DOM manipulation, user input handling
 
-I'm always excited to connect with other learners and developers!
+🤖 Faulty Calculator
 
-- **GitHub:** [@YOUR-USERNAME](https://github.com/mairakhancontact-sudo)
-- **Email:**mairakhan.contact@gmail.com (if you want to share)
+A fun calculator that gives wrong answers 10% of the time
 
----
+Simulates unexpected behavior intentionally
 
-## 🙏 Acknowledgments
+Great practice for randomness and logic
+
+Tech: Math.random(), conditional logic, functions
+
+📚 What I’m Learning
+Week 1
+
+✅ HTML5 structure and semantics
+✅ CSS3 styling, Flexbox, and Grid
+✅ Responsive design
+✅ JavaScript basics (variables, data types)
+✅ Functions and parameters
+✅ Conditional statements
+✅ DOM manipulation
+✅ Event handling
+
+Coming Next
+
+🔄 Loops (for, while)
+📋 Arrays and array methods
+🎯 Advanced DOM manipulation
+🎨 CSS animations
+🚀 And much more!
+
+💻 Technologies Used
+
+HTML5
+
+CSS3
+
+JavaScript
+
+📈 Learning Progress
+Week	Topics Covered	Projects Built
+Week 1	HTML & CSS	Netflix Clone
+Week 2	JavaScript Basics	4 interactive projects
+Week 3	DOM & Logic	Calculator, To-Do, Quiz, More
+Total	—	8+ Projects
+
+Lines of Code: ~1000+
+
+Hours Invested: 20+
+
+🎓 Learning Resources
+
+FreeCodeCamp
+
+MDN Web Docs
+
+YouTube tutorials
+
+Practice, practice, practice!
+
+🌱 My Learning Philosophy
+
+“I code at least 2 hours every day. Consistency beats intensity.”
+
+My Schedule
+
+Daily: 2 focused hours of coding
+
+Weekly: Build 2–3 new projects
+
+Monthly Goal: Master one major concept
+
+Why I’m Doing This
+
+I started learning to code at 13 because I want the freedom to build anything I imagine. By age 18, I plan to be a professional developer working on meaningful and innovative projects.
+
+🎯 Goals
+Short-Term (3 months)
+
+✅ Learn HTML & CSS (DONE!)
+🔄 Master JavaScript fundamentals
+📱 Build my first full website
+🎮 Create interactive web games
+
+Mid-Term (1 year)
+
+Learn React
+
+Learn Node.js
+
+Build 50+ projects
+
+Start freelancing
+
+Long-Term (5 years)
+
+Master Full-Stack Development
+
+Learn AI/ML and build AI-powered apps
+
+Become financially independent through coding
+
+Help others learn to code
+
+📫 Connect With Me
+
+I’m always excited to connect with other learners and developers!
+
+GitHub: @YOUR-USERNAME
+
+Email: mairakhan.contact@gmail.com
+
+🙏 Acknowledgments
 
 Special thanks to:
-- My family for supporting my learning journey
-- The amazing dev community for free resources
-- Everyone who has shared their knowledge online
 
----
+My family for supporting my learning journey
 
-## 📝 License
+The developer community for free resources
 
-This project is open source and available for anyone to learn from!
+Everyone who shares knowledge online
 
----
+📝 License
 
-## 💪 Daily Coding Streak
+This repository is open source and available for anyone who wants to learn from it.
 
-Started: January 9, 2026  
+💪 Daily Coding Streak
+
+Started: January 9, 2026
+
 Current Streak: 3 days 🔥
 
-**Commit to the journey, not just the destination!**
-
----
-
-### 🌟 Star this repo if you're also learning to code!
-
-*Last Updated: January 11, 2026*
+⭐ Star this repository if you’re also learning to code!
+🕒 Last Updated: January 11, 2026
