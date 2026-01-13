@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Calculator</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, teal, #bdf0e8);
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+h1 {
+  text-align: center;
+  color: #ef4444;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* INPUT ROW */
+.input-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input {
+  padding: 14px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+input:focus {
+  border-color: #ef4444;
+  outline: none;
+}
+
+/* BUTTONS */
+.buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+button {
+  flex: 1;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#addRowBtn {
+  background: #14b8a6;
+  color: white;
+}
+
+#addRowBtn:hover {
+  background: #0d9488;
+}
+
+#calcBtn {
+  background: #0f766e;
+  color: white;
+}
+
+#calcBtn:hover {
+  background: #115e59;
+}
+
+/* RESULT */
+.result {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #eee;
+  font-size: 22px;
+  font-weight: bold;
+  color: #14b8a6;
+  text-align: right;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🧮 Shopping Calculator</h1>
+  <p class="subtitle">Add items and calculate total cost</p>
+
+  <div id="rows">
+    <div class="input-row">
+      <input type="text" placeholder="Item name">
+      <input type="number" placeholder="Qty" min="1" value="1">
+      <input type="number" placeholder="Price" min="0">
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button id="addRowBtn">➕ Add Item</button>
+    <button id="calcBtn">💰 Calculate</button>
+  </div>
+
+  <div class="result" id="result">
+    Total: PKR 0
+  </div>
+</div>
+
+<script>
+const rowsContainer = document.getElementById("rows");
+const result = document.getElementById("result");
+
+document.getElementById("addRowBtn").onclick = () => {
+  const row = document.createElement("div");
+  row.className = "input-row";
+  row.innerHTML = `
+    <input type="text" placeholder="Item name">
+    <input type="number" placeholder="Qty" min="1" value="1">
+    <input type="number" placeholder="Price" min="0">
+  `;
+  rowsContainer.appendChild(row);
+};
+
+document.getElementById("calcBtn").onclick = () => {
+  let total = 0;
+
+  const rows = document.querySelectorAll(".input-row");
+
+  rows.forEach(row => {
+    const qty = Number(row.children[1].value);
+    const price = Number(row.children[2].value);
+    total += qty * price;
+  });
+
+  result.textContent = `Total: PKR ${total.toFixed(2)}`;
+};
+</script>
+
+</body>
+</html>

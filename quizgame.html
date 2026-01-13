@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .quiz-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #f5576c;
+            margin-bottom: 10px;
+        }
+        
+        .score {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .question-section {
+            margin-bottom: 30px;
+        }
+        
+        .question-number {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .question {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .option-btn {
+            padding: 20px;
+            font-size: 18px;
+            border: 3px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+        
+        .option-btn:hover {
+            border-color: #f5576c;
+            transform: translateX(10px);
+            background: #fff5f7;
+        }
+        
+        .option-btn.correct {
+            border-color: #2ecc71;
+            background: #d4edda;
+        }
+        
+        .option-btn.wrong {
+            border-color: #e74c3c;
+            background: #f8d7da;
+        }
+        
+        .result-section {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .result-emoji {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .result-text {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .result-score {
+            font-size: 48px;
+            color: #f5576c;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        
+        .restart-btn {
+            padding: 15px 40px;
+            font-size: 20px;
+            background: #f5576c;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .restart-btn:hover {
+            background: #e04555;
+            transform: scale(1.05);
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>🎯 JavaScript Quiz</h1>
+        
+        <div id="quizSection">
+            <div class="score">
+                Score: <span id="currentScore">0</span> / <span id="totalQuestions">0</span>
+            </div>
+            
+            <div class="question-section">
+                <div class="question-number" id="questionNumber"></div>
+                <div class="question" id="question"></div>
+                <div class="options" id="options"></div>
+            </div>
+        </div>
+        
+        <div id="resultSection" class="result-section hidden">
+            <div class="result-emoji" id="resultEmoji"></div>
+            <div class="result-text" id="resultText"></div>
+            <div class="result-score" id="finalScore"></div>
+            <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        // Array of quiz questions
+        const questions = [
+            {
+                question: "What does HTML stand for?",
+                options: [
+                    "Hyper Text Markup Language",
+                    "High Tech Modern Language",
+                    "Home Tool Markup Language",
+                    "Hyperlinks and Text Markup Language"
+                ],
+                correct: 0
+            },
+            {
+                question: "Which symbol is used for single-line comments in JavaScript?",
+                options: [
+                    "/* */",
+                    "#",
+                    "//",
+                    "<!-- -->"
+                ],
+                correct: 2
+            },
+            {
+                question: "What does CSS stand for?",
+                options: [
+                    "Creative Style Sheets",
+                    "Cascading Style Sheets",
+                    "Computer Style Sheets",
+                    "Colorful Style Sheets"
+                ],
+                correct: 1
+            },
+            {
+                question: "Which company developed JavaScript?",
+                options: [
+                    "Microsoft",
+                    "Netscape",
+                    "Google",
+                    "Apple"
+                ],
+                correct: 1
+            },
+            {
+                question: "What is the correct way to create an array in JavaScript?",
+                options: [
+                    "const arr = (1, 2, 3)",
+                    "const arr = [1, 2, 3]",
+                    "const arr = {1, 2, 3}",
+                    "const arr = <1, 2, 3>"
+                ],
+                correct: 1
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+        
+        // Get elements
+        const quizSection = document.getElementById('quizSection');
+        const resultSection = document.getElementById('resultSection');
+        const questionNumber = document.getElementById('questionNumber');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const currentScoreEl = document.getElementById('currentScore');
+        const totalQuestionsEl = document.getElementById('totalQuestions');
+        
+        // Initialize quiz
+        function initQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            answered = false;
+            totalQuestionsEl.textContent = questions.length;
+            currentScoreEl.textContent = score;
+            quizSection.classList.remove('hidden');
+            resultSection.classList.add('hidden');
+            showQuestion();
+        }
+        
+        // Show current question
+        function showQuestion() {
+            answered = false;
+            const q = questions[currentQuestion];
+            
+            questionNumber.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            questionEl.textContent = q.question;
+            
+            // Clear previous options
+            optionsEl.innerHTML = '';
+            
+            // Create option buttons using a loop
+            for (let i = 0; i < q.options.length; i++) {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = q.options[i];
+                button.onclick = function() {
+                    checkAnswer(i);
+                };
+                optionsEl.appendChild(button);
+            }
+        }
+        
+        // Check if answer is correct
+        function checkAnswer(selectedIndex) {
+            if (answered) return;
+            answered = true;
+            
+            const q = questions[currentQuestion];
+            const buttons = optionsEl.querySelectorAll('.option-btn');
+            
+            if (selectedIndex === q.correct) {
+                score++;
+                currentScoreEl.textContent = score;
+                buttons[selectedIndex].classList.add('correct');
+            } else {
+                buttons[selectedIndex].classList.add('wrong');
+                buttons[q.correct].classList.add('correct');
+            }
+            
+            // Disable all buttons
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+            }
+            
+            // Move to next question after delay
+            setTimeout(() => {
+                currentQuestion++;
+                
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    showResults();
+                }
+            }, 2000);
+        }
+        
+        // Show final results
+        function showResults() {
+            quizSection.classList.add('hidden');
+            resultSection.classList.remove('hidden');
+            
+            const percentage = (score / questions.length) * 100;
+            
+            document.getElementById('finalScore').textContent = `${score} / ${questions.length}`;
+            
+            let emoji, text;
+            
+            if (percentage === 100) {
+                emoji = '🏆';
+                text = 'Perfect Score! You\'re a genius!';
+            } else if (percentage >= 80) {
+                emoji = '🎉';
+                text = 'Excellent work!';
+            } else if (percentage >= 60) {
+                emoji = '😊';
+                text = 'Good job!';
+            } else if (percentage >= 40) {
+                emoji = '😐';
+                text = 'Not bad, keep learning!';
+            } else {
+                emoji = '📚';
+                text = 'Keep studying and try again!';
+            }
+            
+            document.getElementById('resultEmoji').textContent = emoji;
+            document.getElementById('resultText').textContent = text;
+        }
+        
+        // Restart quiz
+        function restartQuiz() {
+            initQuiz();
+        }
+        
+        // Start the quiz
+        initQuiz();
+        
+        console.log('Quiz game loaded! 🎯');
+    </script>
+</body>
+</html>
