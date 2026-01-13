@@ -2,9 +2,7 @@
 
 A collection of projects I’m building while learning JavaScript from scratch and growing into a full-stack developer.
 
-👩‍💻 Developer: Maira
-🎂 Age: 13
-📅 Started: January 2026
+👩‍💻 Developer: Maira 🎂 Age: 13 📅 Started: January 2026
 
 🌟 About This Repository
 
@@ -12,8 +10,7 @@ This repository contains all the projects I’m building as I learn web developm
 
 I’ve also created a fully responsive JavaScript portfolio using advanced HTML and CSS concepts to showcase my work.
 
-🎯 My Goal:
-Become a Full-Stack Developer with AI/ML skills by age 18 and build impactful, real-world applications.
+🎯 My Goal: Become a Full-Stack Developer with AI/ML skills by age 18 and build impactful, real-world applications.
 
 🎯 Projects
 📂 Day 1: JavaScript Basics
@@ -22,7 +19,7 @@ Become a Full-Stack Developer with AI/ML skills by age 18 and build impactful, r
 
 My first interactive JavaScript project
 
-Features: click counting, reset button, visual feedback
+Features: Click counting, reset button, visual feedback
 
 Tech: HTML, CSS, JavaScript (variables, onclick events)
 
@@ -84,7 +81,23 @@ Tracks score and displays results
 
 Instant feedback for correct and incorrect answers
 
-Tech: Conditionals, DOM manipulation, user input handling
+Each level changes background, theme, and colors for fun eras
+
+Tech: Conditionals, DOM manipulation, timers, user input handling
+
+🕰️ Time Traveler’s Quiz Adventure
+
+Travel through 7 unique eras: Prehistoric 🦕 → Ancient Egypt 🏺 → Medieval Europe 🏰 → Renaissance 🎨 → Industrial Age 🏭 → Space Age 🚀 → Cyberpunk Future 🤖
+
+Each era changes background, theme, and colors dynamically
+
+Answer questions to advance levels, beat the timer, and unlock the next era
+
+Fun hints system 💡 for tricky questions
+
+Score tracking and final celebration when you reach the last era
+
+Tech: HTML, CSS, JavaScript, DOM manipulation, timers, dynamic styling
 
 🤖 Faulty Calculator
 
@@ -97,8 +110,8 @@ Great practice for randomness and logic
 Tech: Math.random(), conditional logic, functions
 
 📚 What I’m Learning
-Week 1
 
+Week 1:
 ✅ HTML5 structure and semantics
 ✅ CSS3 styling, Flexbox, and Grid
 ✅ Responsive design
@@ -108,8 +121,7 @@ Week 1
 ✅ DOM manipulation
 ✅ Event handling
 
-Coming Next
-
+Coming Next:
 🔄 Loops (for, while)
 📋 Arrays and array methods
 🎯 Advanced DOM manipulation
@@ -128,12 +140,12 @@ JavaScript
 Week	Topics Covered	Projects Built
 Week 1	HTML & CSS	Netflix Clone
 Week 2	JavaScript Basics	4 interactive projects
-Week 3	DOM & Logic	Calculator, To-Do, Quiz, More
-Total	—	8+ Projects
+Week 3	DOM & Logic	Calculator, To-Do, Quiz, Time Traveler’s Quiz Adventure, More
+Total	—	9+ Projects
 
-Lines of Code: ~1000+
+Lines of Code: ~1200+
 
-Hours Invested: 20+
+Hours Invested: 25+
 
 🎓 Learning Resources
 
@@ -147,9 +159,9 @@ Practice, practice, practice!
 
 🌱 My Learning Philosophy
 
-“I code at least 2 hours every day. Consistency beats intensity.”
+"I code at least 2 hours every day. Consistency beats intensity."
 
-My Schedule
+My Schedule:
 
 Daily: 2 focused hours of coding
 
@@ -157,19 +169,18 @@ Weekly: Build 2–3 new projects
 
 Monthly Goal: Master one major concept
 
-Why I’m Doing This
-
+Why I’m Doing This:
 I started learning to code at 13 because I want the freedom to build anything I imagine. By age 18, I plan to be a professional developer working on meaningful and innovative projects.
 
 🎯 Goals
-Short-Term (3 months)
 
+Short-Term (3 months):
 ✅ Learn HTML & CSS (DONE!)
 🔄 Master JavaScript fundamentals
 📱 Build my first full website
 🎮 Create interactive web games
 
-Mid-Term (1 year)
+Mid-Term (1 year):
 
 Learn React
 
@@ -179,7 +190,7 @@ Build 50+ projects
 
 Start freelancing
 
-Long-Term (5 years)
+Long-Term (5 years):
 
 Master Full-Stack Development
 
@@ -218,4 +229,4 @@ Started: January 9, 2026
 Current Streak: 3 days 🔥
 
 ⭐ Star this repository if you’re also learning to code!
-🕒 Last Updated: January 11, 2026
+🕒 Last Updated: January 13, 2026
