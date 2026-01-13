@@ -111,6 +111,20 @@ Tech: Math.random(), conditional logic, functions
 
 📚 What I’m Learning
 
+💸 Expense Tracker
+
+Track your spending smartly! Add expenses, categorize them, and instantly see your total spending. A simple tool to build better money habits 💰
+Tech: JavaScript, DOM manipulation, calculations, arrays
+
+⏳ Countdown Timer
+
+Set a timer for events, goals, or study sessions and watch time tick away in real-time. Perfect for productivity and focus ⏱️
+Tech: JavaScript timers, date handling, DOM updates
+
+📝 MyNotes Website
+
+A personal notes app to write, save, and manage ideas, tasks, or study notes in one place. Clean, fast, and distraction-free ✨
+Tech: JavaScript, localStorage, DOM manipulation
 Week 1:
 ✅ HTML5 structure and semantics
 ✅ CSS3 styling, Flexbox, and Grid
