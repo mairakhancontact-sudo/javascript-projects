@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Traveler's Quiz Adventure</title>
+<style>
+* { box-sizing:border-box; font-family: Arial, Helvetica, sans-serif; transition: all 0.5s ease; }
+body { margin:0; padding:0; display:flex; justify-content:center; align-items:center; min-height:100vh; color:#fff; transition: background 1s ease; }
+.game-container { padding:30px; border-radius:15px; width:100%; max-width:550px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.5); transition: all 0.5s ease; }
+h1 { font-size:1.8rem; margin-bottom:5px; }
+.level { font-size:1rem; margin-bottom:20px; opacity:0.85; }
+.question { font-size:1.3rem; margin-bottom:15px; }
+.options { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+button.option-btn, .next-btn { padding:15px; border:none; border-radius:10px; font-size:1rem; cursor:pointer; transition:0.3s; font-weight:bold; }
+button.option-btn:hover { transform:translateY(-2px); }
+.feedback { margin-top:20px; font-size:1.1rem; font-weight:bold; min-height:30px; }
+.score { margin-top:20px; font-size:1rem; opacity:0.8; }
+.next-btn { margin-top:20px; display:none; }
+.emoji { font-size:2rem; margin-bottom:10px; display:block; }
+.hint-btn { margin-top:10px; padding:5px 10px; border:none; border-radius:8px; cursor:pointer; background:#ffcc00; color:#333; font-weight:bold; }
+.hint-btn:hover { background:#e6b800; }
+.timer { margin-top:10px; font-size:1rem; opacity:0.8; }
+</style>
+</head>
+<body>
+<div class="game-container" id="gameCard">
+  <span class="emoji" id="levelEmoji">🕰️</span>
+  <h1>Time Traveler's Quiz Adventure</h1>
+  <div class="level" id="level">Level: 1 - Prehistoric</div>
+  <div class="question" id="question">Question appears here...</div>
+  <div class="options" id="options"></div>
+  <button class="hint-btn" id="hintBtn">💡 Hint</button>
+  <div class="timer" id="timer"></div>
+  <div class="feedback" id="feedback"></div>
+  <button class="next-btn" id="nextBtn">Next ➡️</button>
+  <div class="score" id="score">Score: 0</div>
+</div>
+
+<script>
+const quizData = [
+  {
+    era:"Prehistoric",
+    emoji:"🦕",
+    bg:"#a3c9a8",
+    cardBg:"#7ca982",
+    button:"#4a7c59",
+    textColor:"#1b2f1f",
+    questions:[
+      {q:"Which animal lived during the Jurassic period?", options:["Dinosaur","Lion","Horse","Elephant"], answer:"Dinosaur", hint:"Roamed the earth long before humans."},
+      {q:"What did early humans use for tools?", options:["Stone","Plastic","Iron","Paper"], answer:"Stone", hint:"Rocks were handy."}
+    ]
+  },
+  {
+    era:"Ancient Egypt",
+    emoji:"🏺",
+    bg:"#f5deb3",
+    cardBg:"#c2b280",
+    button:"#b8860b",
+    textColor:"#4b2e0f",
+    questions:[
+      {q:"What river was essential for Egypt?", options:["Nile","Amazon","Mississippi","Yangtze"], answer:"Nile", hint:"Longest river in Africa."},
+      {q:"Used to write hieroglyphs?", options:["Papyrus","Paper","Clay","Stone"], answer:"Papyrus", hint:"Made from plants."}
+    ]
+  },
+  {
+    era:"Medieval Europe",
+    emoji:"🏰",
+    bg:"#8b0000",
+    cardBg:"#800000",
+    button:"#ff4500",
+    textColor:"#fff8dc",
+    questions:[
+      {q:"Weapon of knights?", options:["Sword","Bow","Spear","Dagger"], answer:"Sword", hint:"Sharp and used in duels."},
+      {q:"Castle defense feature?", options:["Moat","Garden","Kitchen","Chapel"], answer:"Moat", hint:"Filled with water around castle."}
+    ]
+  },
+  {
+    era:"Renaissance",
+    emoji:"🎨",
+    bg:"#f0e68c",
+    cardBg:"#d2b48c",
+    button:"#8b4513",
+    textColor:"#3b2f2f",
+    questions:[
+      {q:"Famous painter of Mona Lisa?", options:["Leonardo","Michelangelo","Raphael","Donatello"], answer:"Leonardo", hint:"Also invented flying machines."},
+      {q:"The Renaissance began in which country?", options:["Italy","France","Germany","Spain"], answer:"Italy", hint:"Home of Rome."}
+    ]
+  },
+  {
+    era:"Industrial Age",
+    emoji:"🏭",
+    bg:"#d3d3d3",
+    cardBg:"#a9a9a9",
+    button:"#2f4f4f",
+    textColor:"#1c1c1c",
+    questions:[
+      {q:"What powered early factories?", options:["Steam","Electricity","Solar","Wind"], answer:"Steam", hint:"Powered by boiling water."},
+      {q:"Inventor of the light bulb?", options:["Edison","Tesla","Bell","Ford"], answer:"Edison", hint:"Famous American inventor."}
+    ]
+  },
+  {
+    era:"Space Age",
+    emoji:"🚀",
+    bg:"#0f0f3d",
+    cardBg:"#1e1e4d",
+    button:"#6c63ff",
+    textColor:"#e0e0ff",
+    questions:[
+      {q:"First human on the moon?", options:["Neil Armstrong","Buzz Aldrin","Yuri Gagarin","Michael Collins"], answer:"Neil Armstrong", hint:"Famous moonwalk."},
+      {q:"The Hubble telescope observes?", options:["Stars","Oceans","Mountains","Deserts"], answer:"Stars", hint:"Far beyond Earth."}
+    ]
+  },
+  {
+    era:"Cyberpunk Future",
+    emoji:"🤖",
+    bg:"#0a0a0a",
+    cardBg:"#1a1a1a",
+    button:"#00ffff",
+    textColor:"#00ffff",
+    questions:[
+      {q:"AI assistant example?", options:["Chatbot","Hammer","Wheel","Paintbrush"], answer:"Chatbot", hint:"Talks to you digitally."},
+      {q:"Futuristic transport?", options:["Flying car","Horse","Boat","Skateboard"], answer:"Flying car", hint:"Zooms through the sky."}
+    ]
+  }
+];
+
+let currentLevel = 0;
+let currentQuestion = 0;
+let score = 0;
+let timerInterval;
+
+const levelText = document.getElementById("level");
+const questionText = document.getElementById("question");
+const optionsDiv = document.getElementById("options");
+const feedback = document.getElementById("feedback");
+const scoreDiv = document.getElementById("score");
+const nextBtn = document.getElementById("nextBtn");
+const levelEmoji = document.getElementById("levelEmoji");
+const gameCard = document.getElementById("gameCard");
+const hintBtn = document.getElementById("hintBtn");
+const timerDiv = document.getElementById("timer");
+
+function startTimer(seconds){
+  clearInterval(timerInterval);
+  timerDiv.textContent = `⏱️ ${seconds}s`;
+  timerInterval = setInterval(() => {
+    seconds--;
+    timerDiv.textContent = `⏱️ ${seconds}s`;
+    if(seconds <= 0){
+      clearInterval(timerInterval);
+      feedback.textContent = `⏱️ Time's up! Correct answer: ${quizData[currentLevel].questions[currentQuestion].answer}`;
+      Array.from(optionsDiv.children).forEach(btn=>btn.disabled=true);
+      nextBtn.style.display="inline-block";
+    }
+  },1000);
+}
+
+function loadQuestion() {
+  feedback.textContent = "";
+  nextBtn.style.display = "none";
+
+  const eraData = quizData[currentLevel];
+
+  document.body.style.background = eraData.bg;
+  gameCard.style.background = eraData.cardBg;
+  levelText.style.color = eraData.textColor;
+  questionText.style.color = eraData.textColor;
+  scoreDiv.style.color = eraData.textColor;
+  levelEmoji.textContent = eraData.emoji;
+
+  const qData = eraData.questions[currentQuestion];
+  questionText.textContent = qData.q;
+  optionsDiv.innerHTML = "";
+
+  qData.options.forEach(option => {
+    const btn = document.createElement("button");
+    btn.textContent = option;
+    btn.className = "option-btn";
+    btn.style.backgroundColor = eraData.button;
+    btn.style.color = "#fff";
+    btn.onclick = () => checkAnswer(option);
+    optionsDiv.appendChild(btn);
+  });
+
+  levelText.textContent = `Level: ${currentLevel + 1} - ${eraData.era}`;
+
+  startTimer(20); // 20 second timer for each question
+
+  hintBtn.onclick = () => {
+    alert(`💡 Hint: ${qData.hint}`);
+  }
+}
+
+function checkAnswer(selected) {
+  clearInterval(timerInterval);
+  const correct = quizData[currentLevel].questions[currentQuestion].answer;
+  if(selected === correct){
+    feedback.textContent = "✅ Correct! +10 points";
+    score += 10;
+  } else {
+    feedback.textContent = `❌ Wrong! Correct answer: ${correct}`;
+  }
+  scoreDiv.textContent = `Score: ${score}`;
+  Array.from(optionsDiv.children).forEach(btn=>btn.disabled=true);
+  nextBtn.style.display="inline-block";
+}
+
+nextBtn.onclick = () => {
+  currentQuestion++;
+  if(currentQuestion >= quizData[currentLevel].questions.length){
+    currentLevel++;
+    currentQuestion = 0;
+    if(currentLevel >= quizData.length){
+      questionText.textContent = "🎉 Time travel completed!";
+      optionsDiv.innerHTML = "";
+      feedback.textContent = `Your final score: ${score}`;
+      levelText.textContent = "";
+      levelEmoji.textContent = "🚀";
+      hintBtn.style.display="none";
+      timerDiv.style.display="none";
+      nextBtn.style.display="none";
+      return;
+    }
+  }
+  loadQuestion();
+}
+
+// Start game
+loadQuestion();
+</script>
+</body>
+</html>
