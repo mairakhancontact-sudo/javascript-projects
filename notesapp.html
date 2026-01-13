@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 50px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 40px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .add-note-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            outline: none;
+            font-family: inherit;
+            margin-bottom: 15px;
+        }
+        
+        input:focus, textarea:focus {
+            border-color: #667eea;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        #addNoteBtn {
+            background: #667eea;
+            color: white;
+            width: 100%;
+        }
+        
+        #addNoteBtn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .note-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .note-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .note-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+        
+        .note-content {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            word-wrap: break-word;
+        }
+        
+        .note-date {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .delete-note-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            font-size: 14px;
+            width: 100%;
+        }
+        
+        .delete-note-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 20px;
+        }
+        
+        .stats {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        #clearAllBtn {
+            background: #e74c3c;
+            color: white;
+            width: 100%;
+        }
+        
+        #clearAllBtn:hover {
+            background: #c0392b;
+        }
+        
+        .save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .save-indicator.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="save-indicator" id="saveIndicator">✅ Saved!</div>
+    
+    <div class="container">
+        <h1>📝 My Notes</h1>
+        <p class="subtitle">Your notes are saved automatically!</p>
+        
+        <div class="add-note-section">
+            <input type="text" id="noteTitle" placeholder="Note title...">
+            <textarea id="noteContent" placeholder="Write your note here..."></textarea>
+            <button id="addNoteBtn">➕ Add Note</button>
+        </div>
+        
+        <div class="stats" id="stats">
+            <strong>Total Notes:</strong> 0
+        </div>
+        
+        <div class="notes-grid" id="notesGrid">
+            <div class="empty-state">No notes yet. Create your first note above! ✨</div>
+        </div>
+        
+        <button id="clearAllBtn">🗑️ Clear All Notes</button>
+    </div>
+
+    <script>
+        // Load notes from localStorage or start with empty array
+        let notes = JSON.parse(localStorage.getItem('notes')) || [];
+        
+        // Get elements
+        const noteTitle = document.getElementById('noteTitle');
+        const noteContent = document.getElementById('noteContent');
+        const addNoteBtn = document.getElementById('addNoteBtn');
+        const clearAllBtn = document.getElementById('clearAllBtn');
+        const notesGrid = document.getElementById('notesGrid');
+        const stats = document.getElementById('stats');
+        const saveIndicator = document.getElementById('saveIndicator');
+        
+        // Function to save notes to localStorage
+        function saveNotes() {
+            localStorage.setItem('notes', JSON.stringify(notes));
+            showSaveIndicator();
+            console.log('Notes saved to localStorage!');
+        }
+        
+        // Function to show save indicator
+        function showSaveIndicator() {
+            saveIndicator.classList.add('show');
+            setTimeout(() => {
+                saveIndicator.classList.remove('show');
+            }, 2000);
+        }
+        
+        // Function to render all notes
+        function renderNotes() {
+            notesGrid.innerHTML = '';
+            
+            if (notes.length === 0) {
+                notesGrid.innerHTML = '<div class="empty-state">No notes yet. Create your first note above! ✨</div>';
+                stats.innerHTML = '<strong>Total Notes:</strong> 0';
+                return;
+            }
+            
+            stats.innerHTML = `<strong>Total Notes:</strong> ${notes.length}`;
+            
+            // Loop through notes and create cards
+            for (let i = 0; i < notes.length; i++) {
+                const note = notes[i];
+                
+                const noteCard = document.createElement('div');
+                noteCard.className = 'note-card';
+                noteCard.innerHTML = `
+                    <div class="note-title">${note.title}</div>
+                    <div class="note-content">${note.content}</div>
+                    <div class="note-date">📅 ${note.date}</div>
+                    <button class="delete-note-btn" onclick="deleteNote(${i})">🗑️ Delete</button>
+                `;
+                
+                notesGrid.appendChild(noteCard);
+            }
+        }
+        
+        // Function to add new note
+        function addNote() {
+            const title = noteTitle.value.trim();
+            const content = noteContent.value.trim();
+            
+            if (title === '' || content === '') {
+                alert('⚠️ Please fill in both title and content!');
+                return;
+            }
+            
+            // Create note object with current date
+            const now = new Date();
+            const newNote = {
+                title: title,
+                content: content,
+                date: now.toLocaleDateString() + ' ' + now.toLocaleTimeString()
+            };
+            
+            // Add to array
+            notes.push(newNote);
+            
+            // Save to localStorage
+            saveNotes();
+            
+            // Clear inputs
+            noteTitle.value = '';
+            noteContent.value = '';
+            noteTitle.focus();
+            
+            // Re-render
+            renderNotes();
+            
+            console.log('Note added:', newNote);
+        }
+        
+        // Function to delete note
+        function deleteNote(index) {
+            if (confirm('Are you sure you want to delete this note?')) {
+                const deleted = notes[index];
+                notes.splice(index, 1);
+                saveNotes();
+                renderNotes();
+                console.log('Note deleted:', deleted);
+            }
+        }
+        
+        // Function to clear all notes
+        function clearAllNotes() {
+            if (notes.length === 0) {
+                alert('ℹ️ No notes to clear!');
+                return;
+            }
+            
+            if (confirm('⚠️ Are you sure you want to delete ALL notes? This cannot be undone!')) {
+                notes = [];
+                saveNotes();
+                renderNotes();
+                console.log('All notes cleared!');
+            }
+        }
+        
+        // Event listeners
+        addNoteBtn.addEventListener('click', addNote);
+        clearAllBtn.addEventListener('click', clearAllNotes);
+        
+        // Allow Enter to submit (Ctrl+Enter for new line in textarea)
+        noteTitle.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                noteContent.focus();
+            }
+        });
+        
+        noteContent.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                addNote();
+            }
+        });
+        
+        // Render notes when page loads
+        renderNotes();
+        
+        console.log('Notes app loaded! Notes are saved automatically! 📝');
+        console.log('Current notes:', notes);
+    </script>
+</body>
+</html>
