@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Habit Tracker</title>
+
+<style>
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #222;
+  --accent: #6c63ff;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+}
+
+body.dark {
+  --bg: #0f1220;
+  --card: #1c1f3a;
+  --text: #f1f1f1;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* CARD */
+.container {
+  width: 95%;
+  max-width: 750px;
+  background: var(--card);
+  padding: 40px;
+  border-radius: 22px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+  transition: background 0.4s ease;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 32px;
+}
+
+.theme-toggle {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* INPUT AREA */
+.inputs {
+  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.habit-input {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.add-field {
+  background: #eaeaff;
+}
+
+.add-habits {
+  background: var(--accent);
+  color: white;
+}
+
+/* HABITS LIST */
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.habit {
+  background: var(--bg);
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.habit.done {
+  border-left: 6px solid var(--success);
+}
+
+.habit-name {
+  font-size: 18px;
+}
+
+.streak {
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.actions button {
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+.done-btn {
+  background: var(--success);
+  color: white;
+}
+
+.delete-btn {
+  background: var(--danger);
+  color: white;
+}
+
+.empty {
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .container {
+    padding: 25px;
+  }
+  h1 {
+    font-size: 26px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <header>
+    <h1>🔥 Habit Tracker</h1>
+    <div class="theme-toggle" id="themeToggle">🌙</div>
+  </header>
+
+  <!-- INPUTS -->
+  <div class="inputs" id="inputContainer">
+    <input class="habit-input" placeholder="Enter a habit (e.g. Code 2 hours)">
+  </div>
+
+  <div class="buttons">
+    <button class="add-field" id="addField">➕ Add Habit Field</button>
+    <button class="add-habits" id="addHabits">Add Habits</button>
+  </div>
+
+  <!-- LIST -->
+  <ul id="habitList"></ul>
+  <div class="empty" id="emptyMsg">No habits yet. Start today 🚀</div>
+</div>
+
+<script>
+let habits = JSON.parse(localStorage.getItem("habits")) || [];
+
+const inputContainer = document.getElementById("inputContainer");
+const habitList = document.getElementById("habitList");
+const emptyMsg = document.getElementById("emptyMsg");
+const themeToggle = document.getElementById("themeToggle");
+
+/* DATE HELPERS */
+const today = () => new Date().toISOString().split("T")[0];
+const yesterday = () => {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().split("T")[0];
+};
+
+/* SAVE */
+function save() {
+  localStorage.setItem("habits", JSON.stringify(habits));
+}
+
+/* RENDER */
+function render() {
+  habitList.innerHTML = "";
+  emptyMsg.style.display = habits.length ? "none" : "block";
+
+  habits.forEach((h, i) => {
+    const li = document.createElement("li");
+    li.className = "habit";
+    if (h.lastCompleted === today()) li.classList.add("done");
+
+    li.innerHTML = `
+      <div>
+        <span class="habit-name">${h.name}</span>
+        <span class="streak">🔥 ${h.streak}</span>
+      </div>
+      <div class="actions">
+        <button class="done-btn" onclick="done(${i})">Done</button>
+        <button class="delete-btn" onclick="remove(${i})">Delete</button>
+      </div>
+    `;
+    habitList.appendChild(li);
+  });
+}
+
+/* ADD INPUT FIELD */
+document.getElementById("addField").onclick = () => {
+  const input = document.createElement("input");
+  input.className = "habit-input";
+  input.placeholder = "Enter another habit";
+  inputContainer.appendChild(input);
+};
+
+/* ADD HABITS */
+document.getElementById("addHabits").onclick = () => {
+  const inputs = document.querySelectorAll(".habit-input");
+  inputs.forEach(inp => {
+    if (inp.value.trim()) {
+      habits.push({
+        name: inp.value.trim(),
+        streak: 0,
+        lastCompleted: null
+      });
+    }
+  });
+
+  inputContainer.innerHTML = `<input class="habit-input" placeholder="Enter a habit">`;
+  save();
+  render();
+};
+
+/* DONE */
+function done(i) {
+  const h = habits[i];
+  if (h.lastCompleted === today()) return alert("Already done today!");
+
+  h.streak = h.lastCompleted === yesterday() ? h.streak + 1 : 1;
+  h.lastCompleted = today();
+  save();
+  render();
+}
+
+/* DELETE */
+function remove(i) {
+  if (!confirm("Delete this habit?")) return;
+  habits.splice(i, 1);
+  save();
+  render();
+}
+
+/* THEME */
+themeToggle.onclick = () => {
+  document.body.classList.toggle("dark");
+  themeToggle.textContent =
+    document.body.classList.contains("dark") ? "☀️" : "🌙";
+};
+
+/* INIT */
+render();
+</script>
+</body>
+</html>
