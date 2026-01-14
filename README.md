@@ -2,145 +2,141 @@
 
 A collection of projects I’m building while learning JavaScript from scratch and growing into a full-stack developer.
 
-👩‍💻 Developer: Maira 🎂 Age: 13 📅 Started: January 2026
+👩‍💻 Developer: Maira
+🎂 Age: 13
+📅 Started: January 2026
 
 🌟 About This Repository
 
-This repository contains all the projects I’m building as I learn web development step by step. I started with HTML and CSS and am now diving deeper into JavaScript fundamentals by building small but meaningful projects.
+This repository contains all the projects I’m building as I learn web development step by step. I started with HTML and CSS and am now diving deeper into JavaScript fundamentals by building small, fun, and logic-based projects.
 
-I’ve also created a fully responsive JavaScript portfolio using advanced HTML and CSS concepts to showcase my work.
+I’ve also created a fully responsive JavaScript portfolio website using advanced HTML and CSS concepts to showcase my work.
 
-🎯 My Goal: Become a Full-Stack Developer with AI/ML skills by age 18 and build impactful, real-world applications.
+🎯 My Goal:
+Become a Full-Stack Developer with AI/ML skills by age 18 and build impactful, real-world applications.
 
 🎯 Projects
-📂 Day 1: JavaScript Basics
-
-🎮 Click Counter
-
-My first interactive JavaScript project
-
-Features: Click counting, reset button, visual feedback
-
-Tech: HTML, CSS, JavaScript (variables, onclick events)
-
-📂 Day 2: Functions & Conditionals
-
-🎨 Magic Color Changer
-
-Change background colors with a click
-
-Includes a random color generator
-
-Tech: Functions, event handlers, DOM manipulation
-
-🎲 Number Guessing Game
-
-Guess the secret number between 1–10
-
-Get hints if your guess is too high or too low
-
-Tech: if/else, Math.random(), input validation
+📂 JavaScript Projects
 
 🎂 Age Checker
+Calculate age from birth year and display fun facts and age categories.
+Tech: Functions, calculations, conditionals
 
-Enter birth year to calculate your age
+❌⭕ AI Tic-Tac-Toe
+A smart Tic-Tac-Toe game where the AI tries to win, not just play randomly.
+Features:
 
-Displays fun facts and age categories
+Player vs AI
 
-Tech: Multiple functions, calculations, conditionals
+AI blocks winning moves
 
-📂 Day 3: DOM Manipulation & Logic
+Scoreboard (Player / AI / Draws)
 
-🧮 Shopping Calculator
+Reset game
 
-Dynamically add multiple item rows
+Smooth light ↔ dark mode for the entire page
 
-Enter quantity and price for each item
+Sound effects
+Tech: Arrays, game logic, DOM manipulation
 
-Calculate total shopping cost with one click
+🏷️ Business Name Generator
+Generates creative business name ideas using matching adjectives and nouns.
+Tech: Arrays, randomization, DOM manipulation
 
-Card height grows automatically as items are added
+🎨 Color Changer
+Change background colors with a click, including random color generation.
+Tech: Functions, events, DOM manipulation
 
-Tech: DOM manipulation, event handling, calculations
-
-✅ To-Do List
-
-Add, complete, and delete daily tasks
-
-Clean and minimal user interface
-
-Helps manage productivity efficiently
-
-Tech: Arrays, DOM rendering, event listeners
-
-🧠 Quiz Game
-
-Interactive multiple-choice quiz
-
-Tracks score and displays results
-
-Instant feedback for correct and incorrect answers
-
-Each level changes background, theme, and colors for fun eras
-
-Tech: Conditionals, DOM manipulation, timers, user input handling
-
-🕰️ Time Traveler’s Quiz Adventure
-
-Travel through 7 unique eras: Prehistoric 🦕 → Ancient Egypt 🏺 → Medieval Europe 🏰 → Renaissance 🎨 → Industrial Age 🏭 → Space Age 🚀 → Cyberpunk Future 🤖
-
-Each era changes background, theme, and colors dynamically
-
-Answer questions to advance levels, beat the timer, and unlock the next era
-
-Fun hints system 💡 for tricky questions
-
-Score tracking and final celebration when you reach the last era
-
-Tech: HTML, CSS, JavaScript, DOM manipulation, timers, dynamic styling
-
-🤖 Faulty Calculator
-
-A fun calculator that gives wrong answers 10% of the time
-
-Simulates unexpected behavior intentionally
-
-Great practice for randomness and logic
-
-Tech: Math.random(), conditional logic, functions
-
-📚 What I’m Learning
-
-💸 Expense Tracker
-
-Track your spending smartly! Add expenses, categorize them, and instantly see your total spending. A simple tool to build better money habits 💰
-Tech: JavaScript, DOM manipulation, calculations, arrays
+💾 Color Saver
+Save and reuse your favorite colors easily.
+Tech: Arrays, DOM manipulation, localStorage
 
 ⏳ Countdown Timer
+Set timers for events, study sessions, or goals and watch time tick down live.
+Tech: JavaScript timers, DOM updates
 
-Set a timer for events, goals, or study sessions and watch time tick away in real-time. Perfect for productivity and focus ⏱️
-Tech: JavaScript timers, date handling, DOM updates
+🔢 Day-1 Counter
+My first JavaScript project — a simple click counter with reset functionality.
+Tech: Variables, events
 
-📝 MyNotes Website
+💸 Expense Tracker
+Track expenses, calculate totals, and build better money habits.
+Tech: JavaScript logic, DOM manipulation, calculations
 
-A personal notes app to write, save, and manage ideas, tasks, or study notes in one place. Clean, fast, and distraction-free ✨
-Tech: JavaScript, localStorage, DOM manipulation
-Week 1:
-✅ HTML5 structure and semantics
-✅ CSS3 styling, Flexbox, and Grid
-✅ Responsive design
-✅ JavaScript basics (variables, data types)
-✅ Functions and parameters
-✅ Conditional statements
-✅ DOM manipulation
-✅ Event handling
+🤖 Faulty Calculator
+A calculator that gives wrong answers 10% of the time (intentionally 😄).
+Tech: Math.random(), conditional logic
 
-Coming Next:
-🔄 Loops (for, while)
-📋 Arrays and array methods
-🎯 Advanced DOM manipulation
-🎨 CSS animations
-🚀 And much more!
+✖️ Factorial Calculator
+Calculates factorials using for loops based on user input.
+Tech: Loops, input handling, math logic
+
+🧠 Habit Tracker
+Add multiple habits dynamically. The card grows automatically and supports smooth light/dark mode transitions.
+Tech: DOM manipulation, arrays, UI logic
+
+📝 Notes App (MyNotes)
+Create, save, and manage notes in a clean and distraction-free interface.
+Tech: localStorage, DOM manipulation
+
+🎲 Number Guessing Game
+Guess the secret number and receive hints if you’re too high or too low.
+Tech: if/else, Math.random(), input validation
+
+🧠 Quiz Game
+Interactive quiz with score tracking, instant feedback, and multiple levels.
+Each level changes background, theme, and colors.
+Tech: DOM manipulation, timers, conditionals
+
+🕰️ Time Traveler’s Quiz Adventure
+Travel through 7 unique eras:
+Prehistoric 🦕 → Ancient Egypt 🏺 → Medieval 🏰 → Renaissance 🎨 → Industrial 🏭 → Space 🚀 → Cyberpunk 🤖
+
+Features:
+
+Era-based themes & colors
+
+Level progression
+
+Timers & hints
+
+Score tracking
+
+Final celebration
+Tech: HTML, CSS, JavaScript, dynamic styling
+
+✅ To-Do List
+Add, complete, and delete tasks with a clean and minimal UI.
+Tech: Arrays, DOM rendering, event listeners
+
+📚 What I’m Learning
+✅ Covered So Far
+
+HTML5 structure & semantics
+
+CSS3 (Flexbox, Grid, responsive design)
+
+JavaScript basics (variables, data types)
+
+Functions & parameters
+
+Conditional logic
+
+DOM manipulation
+
+Event handling
+
+🔜 Coming Next
+
+Loops (for, while)
+
+Arrays & array methods
+
+Advanced DOM manipulation
+
+CSS animations
+
+React & backend basics
 
 💻 Technologies Used
 
@@ -153,48 +149,38 @@ JavaScript
 📈 Learning Progress
 Week	Topics Covered	Projects Built
 Week 1	HTML & CSS	Netflix Clone
-Week 2	JavaScript Basics	4 interactive projects
-Week 3	DOM & Logic	Calculator, To-Do, Quiz, Time Traveler’s Quiz Adventure, More
-Total	—	9+ Projects
+Week 2	JavaScript Basics	Core logic projects
+Week 3	DOM & Games	Trackers, Quizzes, AI Game
 
+Total Projects: 16
 Lines of Code: ~1200+
-
 Hours Invested: 25+
-
-🎓 Learning Resources
-
-FreeCodeCamp
-
-MDN Web Docs
-
-YouTube tutorials
-
-Practice, practice, practice!
 
 🌱 My Learning Philosophy
 
-"I code at least 2 hours every day. Consistency beats intensity."
+“I code at least 2 hours every day. Consistency beats intensity.”
 
-My Schedule:
+Schedule
 
-Daily: 2 focused hours of coding
+Daily: 2 focused hours
 
-Weekly: Build 2–3 new projects
+Weekly: 2–3 projects
 
-Monthly Goal: Master one major concept
+Monthly: Master one major concept
 
-Why I’m Doing This:
-I started learning to code at 13 because I want the freedom to build anything I imagine. By age 18, I plan to be a professional developer working on meaningful and innovative projects.
+Why I’m Doing This
+I started learning to code at 13 because I want the freedom to build anything I imagine. By 18, I plan to be a professional developer working on meaningful and innovative projects.
 
 🎯 Goals
+Short-Term (3 months)
 
-Short-Term (3 months):
-✅ Learn HTML & CSS (DONE!)
+✅ Learn HTML & CSS
+
 🔄 Master JavaScript fundamentals
-📱 Build my first full website
-🎮 Create interactive web games
 
-Mid-Term (1 year):
+🎮 Build interactive web games
+
+Mid-Term (1 year)
 
 Learn React
 
@@ -204,33 +190,20 @@ Build 50+ projects
 
 Start freelancing
 
-Long-Term (5 years):
+Long-Term (5 years)
 
 Master Full-Stack Development
 
-Learn AI/ML and build AI-powered apps
+Learn AI/ML
 
-Become financially independent through coding
+Build AI-powered apps
+
+Become financially independent
 
 Help others learn to code
 
 📫 Connect With Me
-
-I’m always excited to connect with other learners and developers!
-
-GitHub: @YOUR-USERNAME
-
 Email: mairakhan.contact@gmail.com
-
-🙏 Acknowledgments
-
-Special thanks to:
-
-My family for supporting my learning journey
-
-The developer community for free resources
-
-Everyone who shares knowledge online
 
 📝 License
 
@@ -238,9 +211,9 @@ This repository is open source and available for anyone who wants to learn from 
 
 💪 Daily Coding Streak
 
-Started: January 9, 2026
-
-Current Streak: 3 days 🔥
+📅 Started: January 9, 2026
+🔥 Current Streak: 3 days
 
 ⭐ Star this repository if you’re also learning to code!
+
 🕒 Last Updated: January 13, 2026
