@@ -196,6 +196,8 @@ ul {
 </div>
 
 <script>
+
+/* LOAD FROM LOCAL STORAGE */
 let habits = JSON.parse(localStorage.getItem("habits")) || [];
 
 const inputContainer = document.getElementById("inputContainer");
@@ -211,12 +213,12 @@ const yesterday = () => {
   return d.toISOString().split("T")[0];
 };
 
-/* SAVE */
-function save() {
+/* SAVE TO LOCAL STORAGE */
+function saveHabits() {
   localStorage.setItem("habits", JSON.stringify(habits));
 }
 
-/* RENDER */
+/* RENDER HABITS */
 function render() {
   habitList.innerHTML = "";
   emptyMsg.style.display = habits.length ? "none" : "block";
@@ -232,15 +234,15 @@ function render() {
         <span class="streak">🔥 ${h.streak}</span>
       </div>
       <div class="actions">
-        <button class="done-btn" onclick="done(${i})">Done</button>
-        <button class="delete-btn" onclick="remove(${i})">Delete</button>
+        <button class="done-btn" onclick="markDone(${i})">Done</button>
+        <button class="delete-btn" onclick="deleteHabit(${i})">Delete</button>
       </div>
     `;
     habitList.appendChild(li);
   });
 }
 
-/* ADD INPUT FIELD */
+/* ADD NEW INPUT FIELD */
 document.getElementById("addField").onclick = () => {
   const input = document.createElement("input");
   input.className = "habit-input";
@@ -251,49 +253,65 @@ document.getElementById("addField").onclick = () => {
 /* ADD HABITS */
 document.getElementById("addHabits").onclick = () => {
   const inputs = document.querySelectorAll(".habit-input");
-  inputs.forEach(inp => {
-    if (inp.value.trim()) {
+
+  inputs.forEach(input => {
+    const name = input.value.trim();
+    if (name) {
       habits.push({
-        name: inp.value.trim(),
+        name,
         streak: 0,
         lastCompleted: null
       });
     }
   });
 
-  inputContainer.innerHTML = `<input class="habit-input" placeholder="Enter a habit">`;
-  save();
+  inputContainer.innerHTML =
+    `<input class="habit-input" placeholder="Enter a habit">`;
+
+  saveHabits();
   render();
 };
 
-/* DONE */
-function done(i) {
-  const h = habits[i];
-  if (h.lastCompleted === today()) return alert("Already done today!");
+/* MARK DONE */
+function markDone(index) {
+  const habit = habits[index];
 
-  h.streak = h.lastCompleted === yesterday() ? h.streak + 1 : 1;
-  h.lastCompleted = today();
-  save();
+  if (habit.lastCompleted === today()) {
+    alert("Already completed today!");
+    return;
+  }
+
+  habit.streak =
+    habit.lastCompleted === yesterday()
+      ? habit.streak + 1
+      : 1;
+
+  habit.lastCompleted = today();
+
+  saveHabits();
   render();
 }
 
-/* DELETE */
-function remove(i) {
+/* DELETE HABIT */
+function deleteHabit(index) {
   if (!confirm("Delete this habit?")) return;
-  habits.splice(i, 1);
-  save();
+
+  habits.splice(index, 1);
+  saveHabits();
   render();
 }
 
-/* THEME */
+/* THEME TOGGLE */
 themeToggle.onclick = () => {
   document.body.classList.toggle("dark");
   themeToggle.textContent =
     document.body.classList.contains("dark") ? "☀️" : "🌙";
 };
 
-/* INIT */
+/* INITIAL LOAD */
 render();
+
 </script>
+
 </body>
 </html>
